@@ -8,7 +8,7 @@ from PIL import Image
 import subprocess
 
 def single_slide_tts_to_mp4():
-    st.header("AI Presenter for Text to Video")
+    st.header("Text to Video")
 
     uploaded_file = st.file_uploader(
         "Upload your slide image (JPG or PNG):", 
