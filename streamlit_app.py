@@ -8,15 +8,15 @@ from PIL import Image
 import subprocess
 
 def single_slide_tts_to_mp4():
-    st.header("Single-Slide TTS to MP4")
+    st.header("AI Presenter for Text to Video")
 
     uploaded_file = st.file_uploader(
         "Upload your slide image (JPG or PNG):", 
         type=["jpg", "jpeg", "png"]
     )
-    text_input = st.text_area("Enter the text for this slide (TTS):")
+    text_input = st.text_area("Enter the text for this slide:")
 
-    if st.button("Generate MP4"):
+    if st.button("Generate Video"):
         if not uploaded_file:
             st.warning("Please upload an image slide.")
             return
@@ -85,9 +85,9 @@ def single_slide_tts_to_mp4():
 
         st.video(mp4_data)
         st.download_button(
-            label="Download MP4",
+            label="Download Video",
             data=mp4_data,
-            file_name="tts_slide.mp4",
+            file_name="ai_slide.mp4",
             mime="video/mp4"
         )
 
@@ -98,11 +98,11 @@ def single_slide_tts_to_mp4():
 
 
 def video_clipper_and_combiner():
-    st.header("Video Clipper and Combiner (FFmpeg)")
+    st.header("Video Editor")
 
     st.write(
         "Upload multiple video files (e.g., .mp4, .mov, .avi) "
-        "in the order you want them concatenated."
+        "in the order you want them to run."
     )
 
     # 1. File uploader
@@ -173,14 +173,14 @@ def video_clipper_and_combiner():
 
 
 def main():
-    st.title("Combined Streamlit App")
+    st.title("AI Presenter")
 
-    menu = ["Single-Slide TTS to MP4", "Video Clipper and Combiner (FFmpeg)"]
+    menu = ["Text to Video", "Video Editor"]
     choice = st.sidebar.selectbox("Select a feature", menu)
 
-    if choice == "Single-Slide TTS to MP4":
+    if choice == "Text to Video":
         single_slide_tts_to_mp4()
-    elif choice == "Video Clipper and Combiner (FFmpeg)":
+    elif choice == "Video Editor":
         video_clipper_and_combiner()
 
 
